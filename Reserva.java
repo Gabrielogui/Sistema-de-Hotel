@@ -12,5 +12,36 @@ public class Reserva {
         this.dataEntrada = dataEntrada;
         this.dataSaida = dataSaida;
     }
+    
+     public Hospede getHospede() {
+        return hospede;
+    }
 
+    public void setHospede(Hospede hospede) {
+        this.hospede = hospede;
+    }
+
+    public Quarto getQuarto() {
+        return quarto;
+    }
+
+    public void setQuarto(Quarto quarto) {
+        this.quarto = quarto;
+    }
+
+    public Date getDataEntrada() {
+        return dataEntrada;
+    }
+
+    public void setDataEntrada(Date dataEntrada) {
+        this.dataEntrada = dataEntrada;
+    }
+
+    public Date getDataSaida() {
+        return dataSaida;
+    }
+
+    public void setDataSaida(Date dataSaida) {
+        this.dataSaida = dataSaida;
+    }
 }

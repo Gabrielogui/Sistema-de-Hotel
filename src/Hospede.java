@@ -1,6 +1,7 @@
 public class Hospede {
     private String nome;
     private String cpf;
+    //private double ValorTotal;
 
     // ======= CONSTRUTOR =======
     public Hospede(String nome, String cpf) {

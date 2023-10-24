@@ -1,0 +1,13 @@
+QUARTOS:
+- Quarto VIP;
+- Quarto Presidencial;
+- Quarto Comum;
+-> metodo descrição (print)
+
+Hotel
+
+Reserva:
+- Conferir se existe quarto disponível(Considerando Reserva de datas futuras)
+    . 
+
+Método para saber qual hóspede está hospedado em cada quarto.

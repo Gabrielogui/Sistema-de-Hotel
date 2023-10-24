@@ -12,4 +12,5 @@ public class Reserva {
         this.dataEntrada = dataEntrada;
         this.dataSaida = dataSaida;
     }
+
 }

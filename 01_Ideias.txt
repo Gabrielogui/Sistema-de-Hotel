@@ -9,5 +9,6 @@ Hotel
 Reserva:
 - Conferir se existe quarto disponível(Considerando Reserva de datas futuras)
     . 
+- Calcular quantos dias o hóspede vai se hospedar
 
 Método para saber qual hóspede está hospedado em cada quarto.

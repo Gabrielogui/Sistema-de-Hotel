@@ -35,4 +35,9 @@ public class Quarto {
         this.precoDiaria = precoDiaria;
     }
 
+    // ======= MÉTODOS =======
+
+    public void calcPrecoTotal(){
+        
+    }
 }

@@ -48,5 +48,7 @@ public class Reserva {
     }
     
     // ======= MÉTODOS ======
-    
+    public int calcDias(){ // Método para calcular o número de dias
+        
+    }
 }

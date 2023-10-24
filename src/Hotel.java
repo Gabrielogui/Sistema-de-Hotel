@@ -31,6 +31,15 @@ public class Hotel {
 
     // ======= MÉTODOS =======
     public void fazerReserva(Hospede hospede, Quarto quarto, Date dataEntrada, Date dataSaida) {
-        
+        Reserva reserva = new Reserva(hospede, quarto, dataEntrada, dataSaida);
+        addReserva(reserva);
+    }
+
+    public void addReserva(Reserva reserva){ // MÉTODO PARA ADICIONAR RESERVAS
+        this.reservas.add(reserva);
+    }
+
+    public void addQuarto(Quarto quarto){ // FUNÇÃO PARA ADICIONAR QUARTOS
+        this.quartos.add(quarto);
     }
 }

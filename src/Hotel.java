@@ -3,13 +3,15 @@ import java.util.List;
 import java.util.Date;
 
 public class Hotel {
-    private List<Quarto> quartos;
-    private List<Reserva> reservas;
+    private ArrayList<Quarto> quartos;
+    private ArrayList<Reserva> reservas;
+    private ArrayList<Hospede> hospedes;
 
     // ======= CONSTRUTOR =======
-    public Hotel(List<Quarto> quartos) {
-        this.quartos = quartos;
+    public Hotel() {
+        this.quartos  = new ArrayList<>();
         this.reservas = new ArrayList<>();
+        this.hospedes = new ArrayList<>();
     }
 
     // ======= GETS E  SETS =======
@@ -17,7 +19,7 @@ public class Hotel {
         return quartos;
     }
 
-    public void setQuartos(List<Quarto> quartos) {
+    public void setQuartos(ArrayList<Quarto> quartos) {
         this.quartos = quartos;
     }
 
@@ -25,21 +27,31 @@ public class Hotel {
         return reservas;
     }
 
-    public void setReservas(List<Reserva> reservas) {
+    public void setReservas(ArrayList<Reserva> reservas) {
         this.reservas = reservas;
     }
 
-    // ======= MÉTODOS =======
-    public void fazerReserva(Hospede hospede, Quarto quarto, Date dataEntrada, Date dataSaida) {
-        Reserva reserva = new Reserva(hospede, quarto, dataEntrada, dataSaida);
-        addReserva(reserva);
+    public ArrayList<Hospede> getHospedes() {
+        return hospedes;
     }
 
+    public void setHospedes(ArrayList<Hospede> hospedes) {
+        this.hospedes = hospedes;
+    }
+
+    // ======= MÉTODOS =======
+    
+
+    // MÉTODOS DE ADD:
     public void addReserva(Reserva reserva){ // MÉTODO PARA ADICIONAR RESERVAS
         this.reservas.add(reserva);
     }
 
     public void addQuarto(Quarto quarto){ // FUNÇÃO PARA ADICIONAR QUARTOS
         this.quartos.add(quarto);
+    }
+
+    public void addHospede(Hospede hospede){ // MÉTODO PARA ADICIONAR UM HÓSPEDE
+        this.hospedes.add(hospede);
     }
 }

@@ -1,12 +1,14 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args){
         Scanner scan = new Scanner(System.in);
-        //String pausa = scan.next();
-
+        Hotel hotel = new Hotel();
+        Tela tela = new Tela();
+        // MENU
         int op;
-        do{
+        while(true){
             System.out.println("===============================");
             System.out.println("  SISTEMA DE RESERVA NO HOTEL  ");
             System.out.println("===============================");
@@ -17,13 +19,23 @@ public class Main {
             System.out.println("5 - Listar Todas as Reservas   ");
             System.out.println("6 - Sair                       ");
             System.out.println("===============================");
+            System.out.println("Escolha a opção:               ");
 
             op = scan.nextInt();
             scan.nextLine();
 
             switch(op){
                 case 1:
+                    System.out.println("Já é um hóspede? (1 = SIM ; 0 = NAO)");
+                    int opc = scan.nextInt();
+                    if(opc == 0){
+                        
+                    } else(opc == 1){
 
+                    }
+                    /* 
+                    Reserva reserva = new Reserva(hospede, quarto, dataEntrada, dataSaida);
+                    hotel.addReserva(reserva);*/
                     break;
                 case 2:
                     break;
@@ -34,13 +46,20 @@ public class Main {
                 case 5:
                     break;
                 case 6:
+                    System.out.println("Saindo do programa...");
+                    System.exit(0);
                     break;
                 default:
                     System.out.println("Opção inválida!");
 
             }
-
-        }while(op != 6);
+            /*if(op == 6){
+                break;
+            }*/
+        }
         
+    }
+
+    private static void exit(int i) {
     }
 }

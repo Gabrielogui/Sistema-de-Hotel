@@ -28,10 +28,21 @@ public class Main {
                 case 1:
                     System.out.println("Já é um hóspede? (1 = SIM ; 0 = NAO)");
                     int opc = scan.nextInt();
-                    if(opc == 0){
-                        
-                    } else(opc == 1){
-
+                    if(opc == 1){
+                        System.out.println("Diga seu CPF");
+                        String cpf = scan.nextLine();
+                        for(int i = 0 ; i < hotel.getHospedes().size() ; i++){
+                            if(hotel.getHospedes().get(i).getCpf() == cpf){
+                                break;
+                            }
+                        }
+                    } else{
+                        System.out.println("Nome do hóspede: ");
+                        String nome = scan.nextLine();
+                        System.out.println("CPF do hóspede: ");
+                        String cpf = scan.nextLine();
+                        Hospede hospede = new Hospede(nome, cpf);
+                        hotel.addHospede(hospede);
                     }
                     /* 
                     Reserva reserva = new Reserva(hospede, quarto, dataEntrada, dataSaida);

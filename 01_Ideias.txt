@@ -1,4 +1,5 @@
 QUARTOS:
+passar tipo do quarto no construtor
 - Quarto VIP;
 - Quarto Presidencial;
 - Quarto Comum;

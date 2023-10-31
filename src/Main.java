@@ -28,13 +28,14 @@ public class Main {
                 case 1:
                     System.out.println("Já é um hóspede? (1 = SIM ; 0 = NAO)");
                     int opc = scan.nextInt();
+                    scan.nextLine();
+                    int i;
+
                     if(opc == 1){
                         System.out.println("Diga seu CPF");
                         String cpf = scan.nextLine();
-                        for(int i = 0 ; i < hotel.getHospedes().size() ; i++){
-                            if(hotel.getHospedes().get(i).getCpf() == cpf){
-                                break;
-                            }
+                        if(hotel.conferirCpf(cpf) == null){
+                            continue;
                         }
                     } else{
                         System.out.println("Nome do hóspede: ");
@@ -43,9 +44,21 @@ public class Main {
                         String cpf = scan.nextLine();
                         Hospede hospede = new Hospede(nome, cpf);
                         hotel.addHospede(hospede);
+                        continue;
                     }
+                    System.out.println("Deseja quarto vip? (1 = SIM ; 0 = NAO)");
+                    int opVip = scan.nextInt();
+                    scan.nextLine();
+
+                    if(opVip == 1){
+                        QuartoVIP = new QuartoVIP(1);
+                    }else{
+
+                    }
+                    
+                    
                     /* 
-                    Reserva reserva = new Reserva(hospede, quarto, dataEntrada, dataSaida);
+                    Reserva reserva = new Reserva(hotel.conferirCpf(cpf), quarto, dataEntrada, dataSaida);
                     hotel.addReserva(reserva);*/
                     break;
                 case 2:

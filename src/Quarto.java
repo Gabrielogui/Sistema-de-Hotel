@@ -1,12 +1,12 @@
 public class Quarto {
     private int numero;
-    private boolean disponivel;
-    private double precoDiaria;
+    private boolean disponivel; // COLOCAR LISTA DE DATAS
+    protected double precoDiaria; 
 
     // ======= CONSTRUTOR =======
-    public Quarto(int numero, double precoDiaria) {
+    public Quarto(int numero) {
         this.numero = numero;
-        this.precoDiaria = precoDiaria;
+        this.precoDiaria = 500.00;
         this.disponivel = true;
     }
 
@@ -37,7 +37,12 @@ public class Quarto {
 
     // ======= MÉTODOS =======
 
-    public void calcPrecoTotal(){
+    public double calcPrecoTotal(){
+        int qtdeDia=0;
+        return this.precoDiaria * qtdeDia;
+    }
+
+    public void descricao(){
         
     }
 }

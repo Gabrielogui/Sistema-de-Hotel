@@ -41,6 +41,20 @@ public class Hotel {
 
     // ======= MÉTODOS =======
     
+    public Hospede conferirCpf(String cpf){
+        int i, cont=0;
+        for(i = 0 ; i < this.hospedes.size() ; i++){
+            if(this.hospedes.get(i).getCpf() == cpf){
+                cont=1;
+                break;
+            }
+        }
+        if(cont == 1){
+            return hospedes.get(i);
+        }else{
+            return null; // TESTAR PARA VÊ SE FUNCIONA
+        }
+    }
 
     // MÉTODOS DE ADD:
     public void addReserva(Reserva reserva){ // MÉTODO PARA ADICIONAR RESERVAS

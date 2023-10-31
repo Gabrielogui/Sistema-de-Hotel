@@ -7,7 +7,7 @@ public class Tela extends JFrame{
     public Tela(){
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setSize(this.largura, this.altura);
-        this.setTitle("xereca");
+        this.setTitle("SIstema de Reserva");
         this.setVisible(true);
 
        // this.setLayout();

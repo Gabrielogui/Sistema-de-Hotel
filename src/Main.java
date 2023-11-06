@@ -17,7 +17,8 @@ public class Main {
             System.out.println("3 - Editar Reserva             ");
             System.out.println("4 - Consultar Reserva          ");
             System.out.println("5 - Listar Todas as Reservas   ");
-            System.out.println("6 - Sair                       ");
+            System.out.println("6 - Hospede                    ");
+            System.out.println("7 - Sair                       ");
             System.out.println("===============================");
             System.out.println("Escolha a opção:               ");
 
@@ -26,6 +27,7 @@ public class Main {
 
             switch(op){
                 case 1:
+                    String cpf;
                     System.out.println("Já é um hóspede? (1 = SIM ; 0 = NAO)");
                     int opc = scan.nextInt();
                     scan.nextLine();
@@ -33,33 +35,34 @@ public class Main {
 
                     if(opc == 1){
                         System.out.println("Diga seu CPF");
-                        String cpf = scan.nextLine();
-                        if(hotel.conferirCpf(cpf) == null){
+                        cpf = scan.nextLine();
+                        if(hotel.conferirCpf(cpf) == null){ // DANDO ERRO
+                            System.out.println("1");
                             continue;
                         }
                     } else{
                         System.out.println("Nome do hóspede: ");
                         String nome = scan.nextLine();
                         System.out.println("CPF do hóspede: ");
-                        String cpf = scan.nextLine();
+                        cpf = scan.nextLine();
                         Hospede hospede = new Hospede(nome, cpf);
                         hotel.addHospede(hospede);
                         continue;
                     }
-                    System.out.println("Deseja quarto vip? (1 = SIM ; 0 = NAO)");
+                    /*System.out.println("Deseja quarto vip? (1 = SIM ; 0 = NAO)");
                     int opVip = scan.nextInt();
                     scan.nextLine();
 
                     if(opVip == 1){
-                        QuartoVIP = new QuartoVIP(1);
+                        QuartoVIP quartoVIP = new QuartoVIP(1);
                     }else{
-
-                    }
+                        Quarto quarto = new Quarto(2);
+                    }*/
+                    Quarto quarto = new Quarto(1);
                     
-                    
-                    /* 
-                    Reserva reserva = new Reserva(hotel.conferirCpf(cpf), quarto, dataEntrada, dataSaida);
-                    hotel.addReserva(reserva);*/
+                    Reserva reserva = new Reserva(hotel.conferirCpf(cpf), quarto);
+                    hotel.addReserva(reserva);
+                    System.out.println("Reserva feita com sucesso!");
                     break;
                 case 2:
                     break;
@@ -70,6 +73,14 @@ public class Main {
                 case 5:
                     break;
                 case 6:
+                   /* System.out.println("Nome: ");
+                    String nome = scan.nextLine();
+                    System.out.println("cpf: ");
+                    String cpf1 = scan.nextLine();
+                    Hospede hospede = new Hospede(nome, cpf1);
+                    hotel.addHospede(hospede);
+                    */
+                case 7:
                     System.out.println("Saindo do programa...");
                     System.exit(0);
                     break;

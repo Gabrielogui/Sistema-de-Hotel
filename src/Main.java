@@ -17,8 +17,9 @@ public class Main {
             System.out.println("3 - Editar Reserva             ");
             System.out.println("4 - Consultar Reserva          ");
             System.out.println("5 - Listar Todas as Reservas   ");
-            System.out.println("6 - Hospede                    ");
-            System.out.println("7 - Sair                       ");
+            System.out.println("6 - Listar todos os Hospede    ");
+            System.out.println("7 - Remover Hóspede            ");
+            System.out.println("8 - Sair                       ");
             System.out.println("===============================");
             System.out.println("Escolha a opção:               ");
 
@@ -36,8 +37,7 @@ public class Main {
                     if(opc == 1){
                         System.out.println("Diga seu CPF");
                         cpf = scan.nextLine();
-                        if(hotel.conferirCpf(cpf) == null){ // DANDO ERRO
-                            System.out.println("1");
+                        if(hotel.conferirCpf(cpf) == null){ 
                             continue;
                         }
                     } else{
@@ -58,21 +58,32 @@ public class Main {
                     }else{
                         Quarto quarto = new Quarto(2);
                     }*/
-                    Quarto quarto = new Quarto(1);
+                    Quarto quarto = new Quarto(1); // FUTURAMENTE JA TERÃO QUARTOS PRE FEITOS
                     
                     Reserva reserva = new Reserva(hotel.conferirCpf(cpf), quarto);
                     hotel.addReserva(reserva);
                     System.out.println("Reserva feita com sucesso!");
                     break;
-                case 2:
+                case 2: // RESOLVER
+                    System.out.println("Informe o cpf da reserva que deseje remover: ");
+                    cpf = scan.nextLine();
+                    if(hotel.removerReserva(cpf) == 0){
+                        System.out.println("Cpf não encontrado!");
+                        continue;
+                    }
+                    hotel.removerReserva(cpf);
+                    System.out.println("Reserva removida com sucesso!");
                     break;
                 case 3:
+    
                     break;
                 case 4:
                     break;
                 case 5:
                     break;
                 case 6:
+                    hotel.listarHospedes();
+                    break;
                    /* System.out.println("Nome: ");
                     String nome = scan.nextLine();
                     System.out.println("cpf: ");
@@ -81,9 +92,19 @@ public class Main {
                     hotel.addHospede(hospede);
                     */
                 case 7:
+                    System.out.println("Qual o cpf do hóspede que deseja excluir? ");
+                    cpf = scan.nextLine();
+                    if(hotel.conferirCpf(cpf) == null){
+                        System.out.println("Cpf não encontrado!");
+                        continue;
+                    }
+                    hotel.removerHospede(cpf);
+                    System.out.println("Hospede removido com sucesso!");
+                    break;
+                case 8:
                     System.out.println("Saindo do programa...");
                     System.exit(0);
-                    break;
+                    break; 
                 default:
                     System.out.println("Opção inválida!");
 
@@ -92,9 +113,9 @@ public class Main {
                 break;
             }*/
         }
-        
+        //scan.close();
     }
-
+    
     private static void exit(int i) {
     }
 }

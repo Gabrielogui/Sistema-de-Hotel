@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Date;
+//import java.util.Date;
 
 public class Hotel {
     private ArrayList<Quarto> quartos;
@@ -44,7 +44,7 @@ public class Hotel {
     public Hospede conferirCpf(String cpf){
         int i, cont=0;
         for(i = 0 ; i < this.hospedes.size() ; i++){
-            if(this.hospedes.get(i).getCpf() == cpf){
+            if(this.hospedes.get(i).getCpf().equals(cpf)){
                 cont=1;
                 break;
             }
@@ -54,6 +54,32 @@ public class Hotel {
         }else{
             return null; // TESTAR PARA VÊ SE FUNCIONA
         }
+    }
+
+    public void removerHospede(String cpf){
+        int i;
+        for(i = 0 ; i < this.hospedes.size() ; i++){
+            if(this.hospedes.get(i).getCpf().equals(cpf)){
+                this.hospedes.remove(this.hospedes.get(i));
+            }
+        }
+    }
+
+    public void listarHospedes(){
+        for(int i = 0 ; i < this.hospedes.size() ; i++){
+            System.out.println("Nome: " + this.hospedes.get(i).getNome());
+            System.out.println("CPF : " + this.hospedes.get(i).getCpf());
+        }
+    }
+
+    public int removerReserva(String cpf){
+        for(int i = 0 ; i < this.reservas.size() ; i++){
+            if(this.reservas.get(i).getHospede().getCpf().equals(cpf)){
+                this.reservas.remove(this.reservas.get(i));
+                return 1;
+            }
+        }
+        return 0;
     }
 
     // MÉTODOS DE ADD:

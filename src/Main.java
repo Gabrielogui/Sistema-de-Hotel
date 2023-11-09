@@ -33,22 +33,29 @@ public class Main {
                     int opc = scan.nextInt();
                     scan.nextLine();
                     int i;
+                    String nome;
+                    Hospede usuario = null;
 
                     if(opc == 1){
-                        System.out.println("Diga seu CPF");
+                        System.out.println("Digite seu CPF: ");
                         cpf = scan.nextLine();
                         if(hotel.conferirCpf(cpf) == null){ 
+                            System.out.println("CPF não encontrado! ");
                             continue;
                         }
-                    } else{
+                        usuario = hotel.conferirCpf(cpf);
+                    }
+                    if(opc == 0){
                         System.out.println("Nome do hóspede: ");
-                        String nome = scan.nextLine();
+                        nome = scan.nextLine();
                         System.out.println("CPF do hóspede: ");
                         cpf = scan.nextLine();
                         Hospede hospede = new Hospede(nome, cpf);
                         hotel.addHospede(hospede);
-                        continue;
+                        usuario = hotel.conferirCpf(cpf);
+                        //continue;
                     }
+                    
                     /*System.out.println("Deseja quarto vip? (1 = SIM ; 0 = NAO)");
                     int opVip = scan.nextInt();
                     scan.nextLine();
@@ -57,29 +64,37 @@ public class Main {
                         QuartoVIP quartoVIP = new QuartoVIP(1);
                     }else{
                         Quarto quarto = new Quarto(2);
-                    }*/
+                            }*/
                     Quarto quarto = new Quarto(1); // FUTURAMENTE JA TERÃO QUARTOS PRE FEITOS
                     
-                    Reserva reserva = new Reserva(hotel.conferirCpf(cpf), quarto);
+                    Reserva reserva = new Reserva(usuario, quarto);
                     hotel.addReserva(reserva);
                     System.out.println("Reserva feita com sucesso!");
                     break;
                 case 2: // RESOLVER
                     System.out.println("Informe o cpf da reserva que deseje remover: ");
                     cpf = scan.nextLine();
-                    if(hotel.removerReserva(cpf) == 0){
+                    if(hotel.removerReserva(cpf) == 0){ // ERRO AQUI
                         System.out.println("Cpf não encontrado!");
                         continue;
                     }
                     hotel.removerReserva(cpf);
                     System.out.println("Reserva removida com sucesso!");
                     break;
-                case 3:
-    
+                case 3: // EDITAR RESERVA
+                    
                     break;
-                case 4:
+                case 4: // CONSULTAR RESRVAS
+                    System.out.println("Digite o cpf da Reserva: ");
+                    cpf = scan.nextLine();
+                    if(hotel.conferirCpf(cpf) == null){
+                        System.out.println("CPF não encontrado! ");
+                        continue;
+                    }
+                    hotel.printarUmaReserva(cpf);
+                    scan.nextLine();
                     break;
-                case 5:
+                case 5: // LISTAR AS RESERVAS
                     break;
                 case 6:
                     hotel.listarHospedes();

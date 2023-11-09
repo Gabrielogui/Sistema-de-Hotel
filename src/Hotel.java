@@ -82,6 +82,18 @@ public class Hotel {
         return 0;
     }
 
+    public void printarUmaReserva(String cpf){ // FINALIZAR
+        for(int i = 0 ; i < this.reservas.size() ; i++){
+            if(this.reservas.get(i).getHospede().getCpf().equals(cpf)){
+                System.out.println("========= RESERVA DE " + this.reservas.get(i).getHospede().getNome() + ": =========");
+                System.out.println("CPF    : " + cpf);
+                System.out.println("QUARTO : "); 
+                System.out.println("DATA DE CHECK-IN : ");
+                System.out.println("DATA DE CHECK-OUT: ");
+            }
+        }
+    }
+
     // MÉTODOS DE ADD:
     public void addReserva(Reserva reserva){ // MÉTODO PARA ADICIONAR RESERVAS
         this.reservas.add(reserva);

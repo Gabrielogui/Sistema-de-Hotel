@@ -16,3 +16,5 @@ Método para saber qual hóspede está hospedado em cada quarto.
 
 Arquivo de Hóspedes - Quando clicar em 'Fazer Reserva', pergunta se já tem hóspede cadastrado;
     se sim, entra no arquivo, se não cria um novo hóspede;
+
+USAR FERRAMENTA QUE FAZ A INTERFACE(PESQUISAR) / GERA CÓDIGO

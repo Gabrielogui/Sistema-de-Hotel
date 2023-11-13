@@ -1,7 +1,6 @@
 QUARTOS:
 passar tipo do quarto no construtor
 - Quarto VIP;
-- Quarto Presidencial;
 - Quarto Comum;
 -> metodo descrição (print)
 
@@ -11,6 +10,9 @@ Reserva:
 - Conferir se existe quarto disponível(Considerando Reserva de datas futuras)
     . 
 - Calcular quantos dias o hóspede vai se hospedar
+
+- Método para calcular quanto custará a reserva
+    - imprimir as reservas;
 
 Método para saber qual hóspede está hospedado em cada quarto.
 

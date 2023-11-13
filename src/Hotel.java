@@ -90,6 +90,7 @@ public class Hotel {
                 System.out.println("QUARTO : "); // Botar o quarto
                 System.out.println("DATA DE CHECK-IN : "); // Botar data de chegada
                 System.out.println("DATA DE CHECK-OUT: "); // Botar data de saida
+                System.out.println("PREÇO TOTAL: "); // Botar o preço total
             }
         }
     }
@@ -102,6 +103,7 @@ public class Hotel {
             System.out.println("QUARTO: "); // Botar o quarto
             System.out.println("DATA DE CHECK-IN : "); // Botar data de chegada
             System.out.println("DATA DE CHECK-OUT: "); // Botar data de saida
+            System.out.println("PREÇO TOTAL: "); // Botar o preço total
             System.out.println("====================================================");
         }
     }

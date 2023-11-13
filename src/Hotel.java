@@ -87,10 +87,22 @@ public class Hotel {
             if(this.reservas.get(i).getHospede().getCpf().equals(cpf)){
                 System.out.println("========= RESERVA DE " + this.reservas.get(i).getHospede().getNome() + ": =========");
                 System.out.println("CPF    : " + cpf);
-                System.out.println("QUARTO : "); 
-                System.out.println("DATA DE CHECK-IN : ");
-                System.out.println("DATA DE CHECK-OUT: ");
+                System.out.println("QUARTO : "); // Botar o quarto
+                System.out.println("DATA DE CHECK-IN : "); // Botar data de chegada
+                System.out.println("DATA DE CHECK-OUT: "); // Botar data de saida
             }
+        }
+    }
+
+    public void listarReservas(){ // FINALIZAR
+        System.out.println("===============| LISTAS DE RESERVAS |===============");
+        for(int i = 0 ; i < this.reservas.size() ; i++){
+            System.out.println("Nome: " + this.reservas.get(i).getHospede().getNome());
+            System.out.println("CPF : " + this.reservas.get(i).getHospede().getCpf());
+            System.out.println("QUARTO: "); // Botar o quarto
+            System.out.println("DATA DE CHECK-IN : "); // Botar data de chegada
+            System.out.println("DATA DE CHECK-OUT: "); // Botar data de saida
+            System.out.println("====================================================");
         }
     }
 

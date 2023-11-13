@@ -71,10 +71,10 @@ public class Main {
                     hotel.addReserva(reserva);
                     System.out.println("Reserva feita com sucesso!");
                     break;
-                case 2: // RESOLVER
+                case 2:
                     System.out.println("Informe o cpf da reserva que deseje remover: ");
                     cpf = scan.nextLine();
-                    if(hotel.removerReserva(cpf) == 0){ // ERRO AQUI
+                    if(hotel.removerReserva(cpf) == 0){ 
                         System.out.println("Cpf não encontrado!");
                         continue;
                     }
@@ -82,7 +82,24 @@ public class Main {
                     System.out.println("Reserva removida com sucesso!");
                     break;
                 case 3: // EDITAR RESERVA
-                    
+                    System.out.println("Insira o cpf da reserva que deseja alterar: ");
+                    cpf = scan.nextLine();
+                    if(hotel.conferirCpf(cpf) == null){
+                        System.out.println("CPF não encontrado! ");
+                        continue;
+                    }
+                    int o = 0;
+                    while(o != 1){
+                        hotel.printarUmaReserva(cpf);
+                        System.out.println("Nova data:");
+                        /*
+                         
+                        NOVA DATA;
+                         
+                         */
+                        System.out.println("Deseja continuar? (sim = 0 ; nao = 1)");
+                        o = scan.nextInt();
+                    }
                     break;
                 case 4: // CONSULTAR RESRVAS
                     System.out.println("Digite o cpf da Reserva: ");
@@ -95,6 +112,8 @@ public class Main {
                     scan.nextLine();
                     break;
                 case 5: // LISTAR AS RESERVAS
+                    hotel.listarReservas();
+                    scan.nextLine();
                     break;
                 case 6:
                     hotel.listarHospedes();
@@ -113,6 +132,9 @@ public class Main {
                         System.out.println("Cpf não encontrado!");
                         continue;
                     }
+                    do{
+                        hotel.removerReserva(cpf);
+                    }while(hotel.removerReserva(cpf) == 1);
                     hotel.removerHospede(cpf);
                     System.out.println("Hospede removido com sucesso!");
                     break;

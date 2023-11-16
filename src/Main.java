@@ -39,6 +39,7 @@ public class Main {
                     Hospede usuario = null;
                     LocalDate data_entrada, data_saida;
                     String data;
+                    Quarto quarto;
 
                     if(opc == 1){
                         System.out.println("Digite seu CPF: ");
@@ -60,6 +61,9 @@ public class Main {
                         //continue;
                     }
 
+                    System.out.println("Você deseja quarto VIP(1 = SIM ; 0 = NAO)");
+                    int opVip = scan.nextInt();
+
                      // Definindo o formato da data
                     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
                     System.out.println("Informe a data que deseja realizar o check-in: ");
@@ -69,13 +73,17 @@ public class Main {
                     System.out.println("Informe a data que deseja realizar o check-out: ");
                     data = scan.nextLine();
                     data_saida = LocalDate.parse(data, formatter);
-
-                    if(hotel.verificarDatasReserva(data_entrada, data_saida)){
-
-                    }
-                    else{
+                    
+                    if(opVip == 0){
+                        if(hotel.verificarDatasReserva(data_entrada, data_saida) == null){
+                        System.out.println("Essa data não está disponível!");
+                        continue;
+                        }
+                        quarto = hotel.verificarDatasReserva(data_entrada, data_saida);
+                    } else{
                         
                     }
+                    
 
                     
                     /*System.out.println("Deseja quarto vip? (1 = SIM ; 0 = NAO)");

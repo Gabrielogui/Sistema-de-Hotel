@@ -108,23 +108,51 @@ public class Hotel {
         }
     }
 
-    public boolean verificarDatasReserva(LocalDate data_entrada, LocalDate data_saida){
-        int cont = 0;
-        for(int i = 0 ; i < this.reservas.size() ; i++){
-            if((data_entrada.isAfter(this.reservas.get(i).getDataSaida()) && data_saida.isAfter(this.reservas.get(i).getDataSaida())) || (data_entrada.isBefore(this.reservas.get(i).getDataEntrada()) && data_saida.isBefore(this.reservas.get(i).getDataEntrada()))){
-                cont++;
-               // return true;
+    public Quarto verificarDatasReserva(LocalDate data_entrada, LocalDate data_saida){
+        int cont1 = 0;
+        int cont2 = 0;
+        for(int j = 0 ; j < this.quartos.size() - 3 ; j++){
+            cont1 = 0;
+            cont2 = 0;
+            for(int i = 0 ; i < this.reservas.size() ; i++){
+                if(this.quartos.get(j) == this.reservas.get(i).getQuarto()){
+                    cont1++;
+                    if((data_entrada.isAfter(this.reservas.get(i).getDataSaida()) && data_saida.isAfter(this.reservas.get(i).getDataSaida())) || (data_entrada.isBefore(this.reservas.get(i).getDataEntrada()) && data_saida.isBefore(this.reservas.get(i).getDataEntrada()))){
+                        cont2++;
+                    // return true;
+                    }
+                    if(cont1 == cont2){
+                        //this.quartos.get(j).setDisponivel(false);
+                        return this.quartos.get(j);
+                    }
+                }     
             }
         }
-        if(cont == this.reservas.size()){
-            return true;
-        }
-        else{
-            return false;    
-        }
+        return null;
     }
- /*    for j
-    verificar get(j).getquarto == get(i).getquarto */
+ 
+    public Quarto verificarDatasVipReserva(LocalDate data_entrada, LocalDate data_saida){
+        int cont1 = 0;
+        int cont2 = 0;
+        for(int j = 7 ; j < this.quartos.size() ; j++){
+            cont1 = 0;
+            cont2 = 0;
+            for(int i = 0 ; i < this.reservas.size() ; i++){
+                if(this.quartos.get(j) == this.reservas.get(i).getQuarto()){
+                    cont1++;
+                    if((data_entrada.isAfter(this.reservas.get(i).getDataSaida()) && data_saida.isAfter(this.reservas.get(i).getDataSaida())) || (data_entrada.isBefore(this.reservas.get(i).getDataEntrada()) && data_saida.isBefore(this.reservas.get(i).getDataEntrada()))){
+                        cont2++;
+                    // return true;
+                    }
+                    if(cont1 == cont2){
+                        //this.quartos.get(j).setDisponivel(false);
+                        return this.quartos.get(j);
+                    }
+                }     
+            }
+        }
+        return null;
+    }
 
     // MÉTODOS DE ADD:
     public void addReserva(Reserva reserva){ // MÉTODO PARA ADICIONAR RESERVAS

@@ -1,13 +1,13 @@
 public class Quarto {
     private int numero;
-    private boolean disponivel; // COLOCAR LISTA DE DATAS
+    //private boolean disponivel; // COLOCAR LISTA DE DATAS
     protected double precoDiaria; 
 
     // ======= CONSTRUTOR =======
     public Quarto(int numero) {
         this.numero = numero;
         this.precoDiaria = 500.00;
-        this.disponivel = true;
+        //this.disponivel = true;
     }
 
     // ======= GETS E SETS =======
@@ -19,13 +19,13 @@ public class Quarto {
         this.numero = numero;
     }
 
-    public boolean isDisponivel() {
+    /*public boolean getDisponivel() {
         return disponivel;
-    }
+    }*/
 
-    public void setDisponivel(boolean disponivel) {
+    /*public void setDisponivel(boolean disponivel) {
         this.disponivel = disponivel;
-    }
+    }*/
 
     public double getPrecoDiaria() {
         return precoDiaria;

@@ -109,14 +109,22 @@ public class Hotel {
     }
 
     public boolean verificarDatasReserva(LocalDate data_entrada, LocalDate data_saida){
-        
+        int cont = 0;
         for(int i = 0 ; i < this.reservas.size() ; i++){
             if((data_entrada.isAfter(this.reservas.get(i).getDataSaida()) && data_saida.isAfter(this.reservas.get(i).getDataSaida())) || (data_entrada.isBefore(this.reservas.get(i).getDataEntrada()) && data_saida.isBefore(this.reservas.get(i).getDataEntrada()))){
-                return true;
+                cont++;
+               // return true;
             }
         }
-        return false;    
+        if(cont == this.reservas.size()){
+            return true;
+        }
+        else{
+            return false;    
+        }
     }
+ /*    for j
+    verificar get(j).getquarto == get(i).getquarto */
 
     // MÉTODOS DE ADD:
     public void addReserva(Reserva reserva){ // MÉTODO PARA ADICIONAR RESERVAS

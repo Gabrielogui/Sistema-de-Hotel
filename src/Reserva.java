@@ -1,13 +1,13 @@
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Reserva {
     private Hospede hospede;
     private Quarto quarto;
-    private Date dataEntrada;
-    private Date dataSaida;
+    private LocalDate dataEntrada;
+    private LocalDate dataSaida;
 
     // ======= CONSTRUTOR =======
-    public Reserva(Hospede hospede, Quarto quarto/* , Date dataEntrada, Date dataSaida*/) {
+    public Reserva(Hospede hospede, Quarto quarto/* , LocalDate dataEntrada, LocalDate dataSaida*/) {
         this.hospede = hospede;
         this.quarto = quarto;
         /*this.dataEntrada = dataEntrada;
@@ -31,19 +31,19 @@ public class Reserva {
         this.quarto = quarto;
     }
 
-    public Date getDataEntrada() {
+    public LocalDate getDataEntrada() {
         return dataEntrada;
     }
 
-    public void setDataEntrada(Date dataEntrada) {
+    public void setDataEntrada(LocalDate dataEntrada) {
         this.dataEntrada = dataEntrada;
     }
 
-    public Date getDataSaida() {
+    public LocalDate getDataSaida() {
         return dataSaida;
     }
 
-    public void setDataSaida(Date dataSaida) {
+    public void setDataSaida(LocalDate dataSaida) {
         this.dataSaida = dataSaida;
     }
     

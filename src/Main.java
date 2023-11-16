@@ -1,5 +1,7 @@
 import java.util.Scanner;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.time.format.DateTimeFormatter;
 
 public class Main {
     public static void main(String[] args){
@@ -35,6 +37,8 @@ public class Main {
                     int i;
                     String nome;
                     Hospede usuario = null;
+                    LocalDate data_entrada, data_saida;
+                    String data;
 
                     if(opc == 1){
                         System.out.println("Digite seu CPF: ");
@@ -55,6 +59,24 @@ public class Main {
                         usuario = hotel.conferirCpf(cpf);
                         //continue;
                     }
+
+                     // Definindo o formato da data
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                    System.out.println("Informe a data que deseja realizar o check-in: ");
+                    data = scan.nextLine();
+                    data_entrada = LocalDate.parse(data, formatter);
+    
+                    System.out.println("Informe a data que deseja realizar o check-out: ");
+                    data = scan.nextLine();
+                    data_saida = LocalDate.parse(data, formatter);
+
+                    if(hotel.verificarDatasReserva(data_entrada, data_saida)){
+
+                    }
+                    else{
+                        
+                    }
+
                     
                     /*System.out.println("Deseja quarto vip? (1 = SIM ; 0 = NAO)");
                     int opVip = scan.nextInt();

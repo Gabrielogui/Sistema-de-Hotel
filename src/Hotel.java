@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
-//import java.util.Date;
+import java.time.LocalDate;
 
 public class Hotel {
     private ArrayList<Quarto> quartos;
@@ -106,6 +106,16 @@ public class Hotel {
             System.out.println("PREÇO TOTAL: "); // Botar o preço total
             System.out.println("====================================================");
         }
+    }
+
+    public boolean verificarDatasReserva(LocalDate data_entrada, LocalDate data_saida){
+        
+        for(int i = 0 ; i < this.reservas.size() ; i++){
+            if((data_entrada.isAfter(this.reservas.get(i).getDataSaida()) && data_saida.isAfter(this.reservas.get(i).getDataSaida())) || (data_entrada.isBefore(this.reservas.get(i).getDataEntrada()) && data_saida.isBefore(this.reservas.get(i).getDataEntrada()))){
+                return true;
+            }
+        }
+        return false;    
     }
 
     // MÉTODOS DE ADD:

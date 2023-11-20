@@ -7,11 +7,11 @@ public class Reserva {
     private LocalDate dataSaida;
 
     // ======= CONSTRUTOR =======
-    public Reserva(Hospede hospede, Quarto quarto/* , LocalDate dataEntrada, LocalDate dataSaida*/) {
+    public Reserva(Hospede hospede, Quarto quarto, LocalDate dataEntrada, LocalDate dataSaida) {
         this.hospede = hospede;
         this.quarto = quarto;
-        /*this.dataEntrada = dataEntrada;
-        this.dataSaida = dataSaida;*/
+        this.dataEntrada = dataEntrada;
+        this.dataSaida = dataSaida;
     }
 
     // ======= GETS E SETS =======

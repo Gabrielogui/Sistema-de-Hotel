@@ -8,6 +8,13 @@ public class Main {
         Scanner scan = new Scanner(System.in);
         Hotel hotel = new Hotel();
         Tela tela = new Tela();
+
+        // ADICIONANDO OS QUARTOS:
+        for(int i = 0 ; i < 10 ; i++){
+            Quarto q = new Quarto(i + 1);
+            hotel.addQuarto(q);
+        }
+
         // MENU
         int op;
         while(true){
@@ -40,6 +47,7 @@ public class Main {
                     LocalDate data_entrada, data_saida;
                     String data;
                     Quarto quarto;
+                    //QuartoVIP quartovip;
 
                     if(opc == 1){
                         System.out.println("Digite seu CPF: ");
@@ -63,6 +71,7 @@ public class Main {
 
                     System.out.println("Você deseja quarto VIP(1 = SIM ; 0 = NAO)");
                     int opVip = scan.nextInt();
+                    scan.nextLine();
 
                      // Definindo o formato da data
                     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -74,15 +83,24 @@ public class Main {
                     data = scan.nextLine();
                     data_saida = LocalDate.parse(data, formatter);
                     
+                    System.out.println("0");
                     if(opVip == 0){
                         if(hotel.verificarDatasReserva(data_entrada, data_saida) == null){
                         System.out.println("Essa data não está disponível!");
                         continue;
                         }
+                        System.out.println("1");
                         quarto = hotel.verificarDatasReserva(data_entrada, data_saida);
-                    } else{
-                        
-                    }
+                        System.out.println("2");
+                        Reserva reserva = new Reserva(usuario, quarto, data_entrada, data_saida);
+                        System.out.println("3");
+                        hotel.addReserva(reserva);
+                        System.out.println("4");
+                    } /*else{
+                        quartovip = hotel.verificarDatasVipReserva(data_entrada, data_saida);
+                        Reserva reserva = new Reserva(usuario, quarto);
+                        hotel.addReserva(reserva);
+                    }*/
                     
 
                     
@@ -95,10 +113,10 @@ public class Main {
                     }else{
                         Quarto quarto = new Quarto(2);
                             }*/
-                    Quarto quarto = new Quarto(1); // FUTURAMENTE JA TERÃO QUARTOS PRE FEITOS
+                    //Quarto quarto = new Quarto(1); // FUTURAMENTE JA TERÃO QUARTOS PRE FEITOS
                     
-                    Reserva reserva = new Reserva(usuario, quarto);
-                    hotel.addReserva(reserva);
+                    
+                    
                     System.out.println("Reserva feita com sucesso!");
                     break;
                 case 2:

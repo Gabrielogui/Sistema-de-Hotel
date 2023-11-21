@@ -10,7 +10,7 @@ public class Main {
         Tela tela = new Tela();
 
         // ADICIONANDO OS QUARTOS:
-        for(int i = 0 ; i < 10 ; i++){
+        for(int i = 0 ; i < 3 ; i++){
             Quarto q = new Quarto(i + 1);
             hotel.addQuarto(q);
         }

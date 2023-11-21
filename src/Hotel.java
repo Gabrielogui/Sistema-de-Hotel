@@ -114,6 +114,14 @@ public class Hotel {
         }
     }
 
+    // INICIALIZANDO AS PRIMEIRAS RESERVAS:
+    public Quarto inicializando(){
+        int sla;
+        sla = this.reservas.size();
+        return this.quartos.get(sla);
+        //return null;
+    }
+
     // VERFICANDO AS DATAS DISPONIVEIS:
     public Quarto verificarDatasReserva(LocalDate data_entrada, LocalDate data_saida){
         int cont1 = 0;
@@ -122,8 +130,11 @@ public class Hotel {
         if(this.reservas.isEmpty() == true){
             return this.quartos.get(0);
         }
-
-        for(int j = 0 ; j < this.quartos.size() - 3 ; j++){
+        if(this.reservas.size() <= 2){
+            return this.inicializando();
+        }
+        
+        for(int j = 0 ; j < this.quartos.size()/*  - 3*/ ; j++){
             System.out.println("quarto " + (j + 1));
             cont1 = 0;
             cont2 = 0;
@@ -137,11 +148,14 @@ public class Hotel {
                         cont2++;
                     // return true;
                     }
-                    if(cont1 == cont2){
-                        //this.quartos.get(j).setDisponivel(false);
-                        return this.quartos.get(j);
-                    }
-                }     
+                    
+                }/*else if(j == this.reservas.size()){
+                    return this.quartos.get(j);
+                }    */
+            }
+            if(cont1 == cont2){
+                //this.quartos.get(j).setDisponivel(false);
+                return this.quartos.get(j);
             }
         }
         return null;

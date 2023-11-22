@@ -1,4 +1,7 @@
 import java.util.Scanner;
+
+import Telas.TelaPrincipal;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.time.format.DateTimeFormatter;
@@ -10,8 +13,12 @@ public class Main {
         Tela tela = new Tela();
 
         // ADICIONANDO OS QUARTOS:
+        for(int i = 0 ; i < 7 ; i++){
+            QuartoComum q = new QuartoComum(i + 1);
+            hotel.addQuarto(q);
+        }
         for(int i = 0 ; i < 3 ; i++){
-            Quarto q = new Quarto(i + 1);
+            QuartoVIP q = new QuartoVIP(i + 8);
             hotel.addQuarto(q);
         }
 
@@ -46,8 +53,8 @@ public class Main {
                     Hospede usuario = null;
                     LocalDate data_entrada, data_saida;
                     String data;
-                    Quarto quarto;
-                    //QuartoVIP quartovip;
+                    QuartoComum quarto;
+                    QuartoVIP quartovip;
 
                     if(opc == 1){
                         System.out.println("Digite seu CPF: ");
@@ -90,17 +97,18 @@ public class Main {
                         continue;
                         }
                         System.out.println("1");
-                        quarto = hotel.verificarDatasReserva(data_entrada, data_saida);
+                        quarto = (QuartoComum) hotel.verificarDatasReserva(data_entrada, data_saida);
                         System.out.println("2");
                         Reserva reserva = new Reserva(usuario, quarto, data_entrada, data_saida);
                         System.out.println("3");
                         hotel.addReserva(reserva);
                         System.out.println("4");
-                    } /*else{
-                        quartovip = hotel.verificarDatasVipReserva(data_entrada, data_saida);
-                        Reserva reserva = new Reserva(usuario, quarto);
+                    }
+                    else{
+                        quartovip = (QuartoVIP) hotel.verificarDatasVipReserva(data_entrada, data_saida);
+                        Reserva reserva = new Reserva(usuario, quartovip, data_entrada, data_saida);
                         hotel.addReserva(reserva);
-                    }*/
+                    }
                     
 
                     

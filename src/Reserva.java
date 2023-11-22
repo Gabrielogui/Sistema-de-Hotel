@@ -14,6 +14,13 @@ public class Reserva {
         this.dataSaida = dataSaida;
     }
 
+    public Reserva(Hospede hospede, QuartoVIP quartovip, LocalDate dataEntrada, LocalDate dataSaida) {
+        this.hospede = hospede;
+        this.quarto = quartovip;
+        this.dataEntrada = dataEntrada;
+        this.dataSaida = dataSaida;
+    }
+
     // ======= GETS E SETS =======
     public Hospede getHospede() {
         return hospede;

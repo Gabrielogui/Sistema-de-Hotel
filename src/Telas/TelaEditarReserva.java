@@ -1,4 +1,4 @@
-package src.Telas;
+package Telas;
 
 import javax.swing.*;
 

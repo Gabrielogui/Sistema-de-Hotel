@@ -15,14 +15,14 @@ public abstract class Quarto{
     }
 
     // ======= GETS E SETS =======
+    // NÚMERO DO QUARTO:
     public int getNumero() {
         return numero;
     }
-
     public void setNumero(int numero) {
         this.numero = numero;
     }
-
+    // QUANTIDADE DE RESERVAS UTILIZANDO ESSE QUARTO:
     public int getQtdeUsado(){
         return qtdeUsado;
     }
@@ -36,15 +36,15 @@ public abstract class Quarto{
     /*public void setDisponivel(boolean disponivel) {
         this.disponivel = disponivel;
     }*/
-
+    // PREÇO DA DIÁRIA:
     public double getPrecoDiaria() {
         return precoDiaria;
     }
-
     public void setPrecoDiaria(double precoDiaria) {
         this.precoDiaria = precoDiaria;
     }
 
+    // TIPO DO QUARTO:
     public String getTipo(){
         return tipo;
     }
@@ -54,15 +54,17 @@ public abstract class Quarto{
 
     // ======= MÉTODOS =======
 
-    public double calcPrecoTotal(){
+    public double calcPrecoTotal(){ // BOTAR NA CLASSE RESERVA
         int qtdeDia=0;
         return this.precoDiaria * qtdeDia;
     }
 
+    // INTERANDO AS VEZES QUE O QUARTO É UTILIZADO
     public void interarUtilizado(){
         this.qtdeUsado++;
     }
 
+    // DESCRIÇÃO DE CADA QUARTO:
     public void descricao(){
         
     }

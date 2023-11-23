@@ -15,26 +15,26 @@ public class Hotel {
     }
 
     // ======= GETS E  SETS =======
+    // LISTA DE QUARTOS:
     public List<Quarto> getQuartos() {
         return quartos;
     }
-
     public void setQuartos(ArrayList<Quarto> quartos) {
         this.quartos = quartos;
     }
 
+    // LISTA DE RESERVAS:
     public List<Reserva> getReservas() {
         return reservas;
     }
-
     public void setReservas(ArrayList<Reserva> reservas) {
         this.reservas = reservas;
     }
 
+    // LISTA DE HÓSPEDES:
     public ArrayList<Hospede> getHospedes() {
         return hospedes;
     }
-
     public void setHospedes(ArrayList<Hospede> hospedes) {
         this.hospedes = hospedes;
     }
@@ -55,6 +55,19 @@ public class Hotel {
         }else{
             return null; // TESTAR PARA VÊ SE FUNCIONA
         }
+    }
+
+    // CONFERIR ID:
+    public boolean conferirId(int id){
+        if(this.reservas.isEmpty() == true){
+            return false;
+        }
+        for(int i = 0 ; i < this.hospedes.size() ; i++){
+            if(this.reservas.get(i).getId() == id){
+                return true;
+            }
+        }
+        return false;
     }
 
     // REMOVENDO HOSPEDE:
@@ -89,11 +102,27 @@ public class Hotel {
     }
 
     // EXIBINDO UMA RESERVA:
-    public void printarUmaReserva(String cpf){ // FINALIZAR
+    public void printarUmaReservaId(int id){ // FINALIZAR
+        for(int i = 0 ; i < this.reservas.size() ; i++){
+            if(this.reservas.get(i).getId() == id){
+                System.out.println("========= RESERVA DE " + this.reservas.get(i).getHospede().getNome() + ": =========");
+                System.out.println("ID     : " + this.reservas.get(i).getId());
+                System.out.println("CPF    : " + this.reservas.get(i).getHospede().getCpf());
+                System.out.println("QUARTO : " + this.reservas.get(i).getQuarto().getNumero()); // Botar o quarto
+                System.out.println("TIPO   : " + this.reservas.get(i).getQuarto().getTipo());
+                System.out.println("DATA DE CHECK-IN : " + this.reservas.get(i).getDataEntrada()); // Botar data de chegada
+                System.out.println("DATA DE CHECK-OUT: " + this.reservas.get(i).getDataSaida()); // Botar data de saida
+                System.out.println("PREÇO TOTAL: "); // Botar o preço total
+            }
+        }
+    }
+
+    public void printarUmaReservaCpf(String cpf){ // FINALIZAR
         for(int i = 0 ; i < this.reservas.size() ; i++){
             if(this.reservas.get(i).getHospede().getCpf().equals(cpf)){
                 System.out.println("========= RESERVA DE " + this.reservas.get(i).getHospede().getNome() + ": =========");
-                System.out.println("CPF    : " + cpf);
+                System.out.println("ID     : " + this.reservas.get(i).getId());
+                System.out.println("CPF    : " + this.reservas.get(i).getHospede().getCpf());
                 System.out.println("QUARTO : " + this.reservas.get(i).getQuarto().getNumero()); // Botar o quarto
                 System.out.println("TIPO   : " + this.reservas.get(i).getQuarto().getTipo());
                 System.out.println("DATA DE CHECK-IN : " + this.reservas.get(i).getDataEntrada()); // Botar data de chegada
@@ -109,6 +138,7 @@ public class Hotel {
         for(int i = 0 ; i < this.reservas.size() ; i++){
             System.out.println("Nome: " + this.reservas.get(i).getHospede().getNome());
             System.out.println("CPF : " + this.reservas.get(i).getHospede().getCpf());
+            System.out.println("ID  : " + this.reservas.get(i).getId());
             System.out.println("QUARTO: " + this.reservas.get(i).getQuarto().getNumero()); // Botar o quarto
             System.out.println("TIPO  : " + this.reservas.get(i).getQuarto().getTipo());
             System.out.println("DATA DE CHECK-IN : " + this.reservas.get(i).getDataEntrada()); // Botar data de chegada
@@ -124,6 +154,31 @@ public class Hotel {
         sla = this.reservas.size();
         return this.quartos.get(sla);
         //return null;
+    }
+
+    // EDITANDO RESERVA:
+    public void editarReserva(LocalDate data_entrada, LocalDate data_saida, int id, int opVip){
+
+        for(int i = 0 ; i < this.reservas.size() ; i++){
+            if(this.reservas.get(i).getId() == id){
+                this.reservas.get(i).setDataEntrada(data_entrada);
+                this.reservas.get(i).setDataSaida(data_saida);
+                if(opVip == 0){
+                    this.reservas.get(i).setQuarto(this.verificarDatasReserva(data_entrada, data_saida));
+                }else{
+                    this.reservas.get(i).setQuarto(this.verificarDatasVipReserva(data_entrada, data_saida));
+                }      
+            }
+        }
+    }
+
+    // GERANDO ID:
+    public int gerandoId(){
+        if(this.reservas.isEmpty() == true){
+            return 1;
+        }
+        int id = this.reservas.size() + 1;
+        return id;
     }
 
     // VERFICANDO AS DATAS DISPONIVEIS:
@@ -178,6 +233,7 @@ public class Hotel {
     }
     */
     
+    // VERIFICAR DATAS DOS QUARTOS VIPS:
     public Quarto verificarDatasVipReserva(LocalDate data_entrada, LocalDate data_saida){
         int cont1 = 0;
         int cont2 = 0;

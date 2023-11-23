@@ -5,6 +5,7 @@ public class QuartoVIP extends Quarto {
         super(numero);
         super.setTipo("VIP");
     }
+    
     // ======= MÉTODOS =======
     @Override
     public double calcPrecoTotal() {

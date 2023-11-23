@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+import javax.swing.text.html.HTMLEditorKit.Parser;
+
 import Telas.TelaPrincipal;
 
 import java.time.LocalDate;
@@ -11,6 +13,7 @@ public class Main {
         Scanner scan = new Scanner(System.in);
         Hotel hotel = new Hotel();
         Tela tela = new Tela();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
         // ADICIONANDO OS QUARTOS:
         for(int i = 0 ; i < 7 ; i++){
@@ -81,7 +84,7 @@ public class Main {
                     scan.nextLine();
 
                      // Definindo o formato da data
-                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                    //DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
                     System.out.println("Informe a data que deseja realizar o check-in: ");
                     data = scan.nextLine();
                     data_entrada = LocalDate.parse(data, formatter);
@@ -91,6 +94,7 @@ public class Main {
                     data_saida = LocalDate.parse(data, formatter);
                     
                     System.out.println("0");
+                    int id = hotel.gerandoId();
                     if(opVip == 0){
                         if(hotel.verificarDatasReserva(data_entrada, data_saida) == null){
                         System.out.println("Essa data não está disponível!");
@@ -99,14 +103,14 @@ public class Main {
                         System.out.println("1");
                         quarto = (QuartoComum) hotel.verificarDatasReserva(data_entrada, data_saida);
                         System.out.println("2");
-                        Reserva reserva = new Reserva(usuario, quarto, data_entrada, data_saida);
+                        Reserva reserva = new Reserva(usuario, quarto, data_entrada, data_saida, id);
                         System.out.println("3");
                         hotel.addReserva(reserva);
                         System.out.println("4");
                     }
                     else{
                         quartovip = (QuartoVIP) hotel.verificarDatasVipReserva(data_entrada, data_saida);
-                        Reserva reserva = new Reserva(usuario, quartovip, data_entrada, data_saida);
+                        Reserva reserva = new Reserva(usuario, quartovip, data_entrada, data_saida, id);
                         hotel.addReserva(reserva);
                     }
                     
@@ -127,8 +131,8 @@ public class Main {
                     
                     System.out.println("Reserva feita com sucesso!");
                     break;
-                case 2: // EDITAR RESERVA
-                    LocalDate novaDataEntrada, novaDataSaida;
+                case 2: // EXCLUIR RESERVA
+                    
                     
                     System.out.println("Informe o cpf da reserva que deseje remover: ");
                     cpf = scan.nextLine();
@@ -140,35 +144,76 @@ public class Main {
                     System.out.println("Reserva removida com sucesso!");
                     break;
                 case 3: // EDITAR RESERVA
-                    System.out.println("Insira o cpf da reserva que deseja alterar: ");
-                    cpf = scan.nextLine();
-                    if(hotel.conferirCpf(cpf) == null){
-                        System.out.println("CPF não encontrado! ");
+                    LocalDate novaDataEntrada, novaDataSaida;
+                    String novaData;
+
+                    System.out.println("Insira o id da reserva que deseja alterar: ");
+                    id = scan.nextInt();
+                    if(hotel.conferirId(id) == false){
+                        System.out.println("ID não encontrado! ");
                         continue;
                     }
                     int o = 0;
                     while(o != 1){
-                        hotel.printarUmaReserva(cpf);
+                        hotel.printarUmaReservaId(id);
+
+                        System.out.println("Você deseja quarto VIP(1 = SIM ; 0 = NAO)");
+                        opVip = scan.nextInt();
+                        scan.nextLine();
+
+                        //DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
                         System.out.println("Nova data de CHECK-IN: (yyyy-mm-dd) ");
-                        String novaData = scan.nextLine();
+                        novaData = scan.nextLine();
+                        novaDataEntrada = LocalDate.parse(novaData, formatter);
+
+                        System.out.println("Nova data de CHECK-OUT: (yyyy-mm-dd) ");
+                        novaData = scan.nextLine();
+                        novaDataSaida = LocalDate.parse(novaData, formatter);
                         
-                        /*
-                         
-                        NOVA DATA;
-                         
-                         */
+                        if(opVip == 0){
+                            if(hotel.verificarDatasReserva(novaDataEntrada, novaDataSaida) == null){
+                                System.out.println("Novas datas Indisponíveis! ");
+                                scan.nextLine();
+                                continue;
+                            }
+                        }else{
+                            if(hotel.verificarDatasVipReserva(novaDataEntrada, novaDataSaida) == null){
+                                System.out.println("Novas datas Indisponíveis! ");
+                                scan.nextLine();
+                                continue;
+                            }
+                        }
+
+                        hotel.editarReserva(novaDataEntrada, novaDataSaida, id, opVip);
+
                         System.out.println("Deseja continuar? (sim = 0 ; nao = 1)");
                         o = scan.nextInt();
                     }
                     break;
                 case 4: // CONSULTAR RESRVAS
-                    System.out.println("Digite o cpf da Reserva: ");
-                    cpf = scan.nextLine();
-                    if(hotel.conferirCpf(cpf) == null){
-                        System.out.println("CPF não encontrado! ");
-                        continue;
+                    System.out.println("Por cpf ou id? (0 = cpf ; 1 = id)");
+                    int opConsultar = scan.nextInt();
+                    scan.nextLine();
+
+                    if(opConsultar == 0){
+                        System.out.println("Digite o cpf da Reserva: ");
+                        cpf = scan.nextLine();
+                        if(hotel.conferirCpf(cpf) == null){
+                            System.out.println("CPF não encontrado! ");
+                            continue;
+                        }
+                        hotel.printarUmaReservaCpf(cpf);
+                    }else{
+                        System.out.println("Digite o ID da reserva: ");
+                        id = scan.nextInt();
+                        scan.nextLine();
+                        if(hotel.conferirId(id) == false){
+                            System.out.println("ID não encontrado");
+                            continue;
+                        }
+                        hotel.printarUmaReservaId(id);
                     }
-                    hotel.printarUmaReserva(cpf);
+
                     scan.nextLine();
                     break;
                 case 5: // LISTAR AS RESERVAS

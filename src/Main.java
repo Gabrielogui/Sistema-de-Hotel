@@ -73,6 +73,10 @@ public class Main {
                         nome = scan.nextLine();
                         System.out.println("CPF do hóspede: ");
                         cpf = scan.nextLine();
+                        if(hotel.conferirCpf(cpf) != null){
+                            System.out.println("Você já tem cadastro! ");
+                            continue;
+                        }
                         Hospede hospede = new Hospede(nome, cpf);
                         hotel.addHospede(hospede);
                         usuario = hotel.conferirCpf(cpf);

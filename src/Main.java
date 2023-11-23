@@ -85,11 +85,11 @@ public class Main {
 
                      // Definindo o formato da data
                     //DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-                    System.out.println("Informe a data que deseja realizar o check-in: ");
+                    System.out.println("Informe a data que deseja realizar o check-in: (yyyy-MM-dd)");
                     data = scan.nextLine();
                     data_entrada = LocalDate.parse(data, formatter);
     
-                    System.out.println("Informe a data que deseja realizar o check-out: ");
+                    System.out.println("Informe a data que deseja realizar o check-out: (yyyy-MM-dd)");
                     data = scan.nextLine();
                     data_saida = LocalDate.parse(data, formatter);
                     
@@ -97,8 +97,8 @@ public class Main {
                     int id = hotel.gerandoId();
                     if(opVip == 0){
                         if(hotel.verificarDatasReserva(data_entrada, data_saida) == null){
-                        System.out.println("Essa data não está disponível!");
-                        continue;
+                            System.out.println("Essa data não está disponível!");
+                            continue;
                         }
                         System.out.println("1");
                         quarto = (QuartoComum) hotel.verificarDatasReserva(data_entrada, data_saida);
@@ -109,6 +109,10 @@ public class Main {
                         System.out.println("4");
                     }
                     else{
+                        if(hotel.verificarDatasVipReserva(data_entrada, data_saida) == null){
+                            System.out.println("Essa data não está disponível!");
+                            continue;
+                        }
                         quartovip = (QuartoVIP) hotel.verificarDatasVipReserva(data_entrada, data_saida);
                         Reserva reserva = new Reserva(usuario, quartovip, data_entrada, data_saida, id);
                         hotel.addReserva(reserva);

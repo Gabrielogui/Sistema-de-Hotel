@@ -127,7 +127,9 @@ public class Main {
                     
                     System.out.println("Reserva feita com sucesso!");
                     break;
-                case 2:
+                case 2: // EDITAR RESERVA
+                    LocalDate novaDataEntrada, novaDataSaida;
+                    
                     System.out.println("Informe o cpf da reserva que deseje remover: ");
                     cpf = scan.nextLine();
                     if(hotel.removerReserva(cpf) == 0){ 
@@ -147,7 +149,9 @@ public class Main {
                     int o = 0;
                     while(o != 1){
                         hotel.printarUmaReserva(cpf);
-                        System.out.println("Nova data:");
+                        System.out.println("Nova data de CHECK-IN: (yyyy-mm-dd) ");
+                        String novaData = scan.nextLine();
+                        
                         /*
                          
                         NOVA DATA;

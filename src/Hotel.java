@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 public class Hotel {
     private ArrayList<Quarto> quartos;
@@ -281,5 +282,10 @@ public class Hotel {
 
     public void addHospede(Hospede hospede){ // MÉTODO PARA ADICIONAR UM HÓSPEDE
         this.hospedes.add(hospede);
+    }
+
+    public double calcularValor(LocalDate data_inico, LocalDate data_fim){
+        double qtdeDias = ChronoUnit.DAYS.between(data_inico, data_fim) + 1;
+        return qtdeDias;
     }
 }

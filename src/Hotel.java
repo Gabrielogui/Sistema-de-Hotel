@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
+//import java.time.temporal.ChronoUnit;
 
 public class Hotel {
     private ArrayList<Quarto> quartos;
@@ -113,7 +113,8 @@ public class Hotel {
                 System.out.println("TIPO   : " + this.reservas.get(i).getQuarto().getTipo());
                 System.out.println("DATA DE CHECK-IN : " + this.reservas.get(i).getDataEntrada()); // Botar data de chegada
                 System.out.println("DATA DE CHECK-OUT: " + this.reservas.get(i).getDataSaida()); // Botar data de saida
-                System.out.println("PREÇO TOTAL: "); // Botar o preço total
+                System.out.println("PREÇO TOTAL  : " + this.reservas.get(i).getQuarto().calcPrecoTotal(this.reservas.get(i).calcDias())); // Botar o preço total
+                System.out.println("TOTAL DE DIAS: " + this.reservas.get(i).calcDias());
             }
         }
     }
@@ -128,7 +129,8 @@ public class Hotel {
                 System.out.println("TIPO   : " + this.reservas.get(i).getQuarto().getTipo());
                 System.out.println("DATA DE CHECK-IN : " + this.reservas.get(i).getDataEntrada()); // Botar data de chegada
                 System.out.println("DATA DE CHECK-OUT: " + this.reservas.get(i).getDataSaida()); // Botar data de saida
-                System.out.println("PREÇO TOTAL: "); // Botar o preço total
+                System.out.println("PREÇO TOTAL  : " + this.reservas.get(i).getQuarto().calcPrecoTotal(this.reservas.get(i).calcDias())); // Botar o preço total
+                System.out.println("TOTAL DE DIAS: " + this.reservas.get(i).calcDias());
             }
         }
     }
@@ -144,7 +146,8 @@ public class Hotel {
             System.out.println("TIPO  : " + this.reservas.get(i).getQuarto().getTipo());
             System.out.println("DATA DE CHECK-IN : " + this.reservas.get(i).getDataEntrada()); // Botar data de chegada
             System.out.println("DATA DE CHECK-OUT: " + this.reservas.get(i).getDataSaida()); // Botar data de saida
-            System.out.println("PREÇO TOTAL: "); // Botar o preço total
+            System.out.println("PREÇO TOTAL  : " + this.reservas.get(i).getQuarto().calcPrecoTotal(this.reservas.get(i).calcDias())); // Botar o preço total
+            System.out.println("TOTAL DE DIAS: " + this.reservas.get(i).calcDias());
             System.out.println("====================================================");
         }
     }
@@ -284,8 +287,10 @@ public class Hotel {
         this.hospedes.add(hospede);
     }
 
+    /*
     public double calcularValor(LocalDate data_inico, LocalDate data_fim){
         double qtdeDias = ChronoUnit.DAYS.between(data_inico, data_fim) + 1;
         return qtdeDias;
-    }
+    } 
+    */
 }

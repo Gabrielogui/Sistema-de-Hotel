@@ -54,8 +54,7 @@ public abstract class Quarto{
 
     // ======= MÉTODOS =======
 
-    public double calcPrecoTotal(){ // BOTAR NA CLASSE RESERVA
-        int qtdeDia=0;
+    public double calcPrecoTotal(double qtdeDia){ // BOTAR NA CLASSE RESERVA
         return this.precoDiaria * qtdeDia;
     }
 

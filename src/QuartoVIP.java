@@ -8,8 +8,7 @@ public class QuartoVIP extends Quarto {
     
     // ======= MÉTODOS =======
     @Override
-    public double calcPrecoTotal() {
-        int qtdeDia = 0;
+    public double calcPrecoTotal(double qtdeDia) {
         super.precoDiaria = 700.00;
         return super.precoDiaria * qtdeDia;
     }

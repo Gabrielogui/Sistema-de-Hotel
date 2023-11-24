@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 public class Reserva {
     private Hospede hospede;
@@ -66,8 +67,8 @@ public class Reserva {
     }
     
     // ======= MÉTODOS ======
-    public int calcDias(){ // Método para calcular o número de dias
-        int n = 0;
-        return n;
+    public double calcDias(){ // Método para calcular o número de dias
+        double qtdeDias = ChronoUnit.DAYS.between(this.dataEntrada, this.dataSaida) + 1;
+        return qtdeDias;
     }
 }

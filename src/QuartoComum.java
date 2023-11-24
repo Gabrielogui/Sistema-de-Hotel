@@ -8,8 +8,7 @@ public class QuartoComum extends Quarto{
 
     // ======= MÉTODOS =======
     @Override
-    public double calcPrecoTotal(){
-        int qtdeDia = 0;
+    public double calcPrecoTotal(double qtdeDia){
         super.precoDiaria = 500.00;
         return qtdeDia * super.precoDiaria;
     }

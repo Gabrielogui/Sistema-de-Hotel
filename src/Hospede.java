@@ -26,4 +26,11 @@ public class Hospede {
         this.cpf = cpf;
     }
 
+    public String listarHospede(){
+        return "Hospede{" +
+                "Nome = " + this.getNome() +
+                ", CPF = " + this.getCpf() +
+                "}";
+    }
+
 }

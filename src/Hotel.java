@@ -91,7 +91,7 @@ public class Hotel {
         }
     }
 
-    // REMOVENDO RESERVA:
+    // REMOVENDO RESERVA POR CPF:
     public int removerReserva(String cpf){
         for(int i = 0 ; i < this.reservas.size() ; i++){
             if(this.reservas.get(i).getHospede().getCpf().equals(cpf)){
@@ -100,6 +100,37 @@ public class Hotel {
             }
         }
         return 0;
+    }
+
+    // REMOVENDO RESERVA POR ID:
+    public int removerReservaId(int id){
+        for(int i = 0 ; i < this.reservas.size() ; i++){
+            if(this.reservas.get(i).getId() == id){
+                this.reservas.remove(this.reservas.get(i));
+                return 1;
+            }
+        }
+        return 0;
+    }
+
+    // EXIBINDO UMA RESERA POR ID INTERFACE:
+    public String exibirUmaReservaId(int id){
+        for(int i = 0 ; i < this.reservas.size() ; i++){
+            if(this.reservas.get(i).getId() == id){
+                return "Reserva{" +
+                        "ID = " + this.reservas.get(i).getId() +
+                        ", Nome = " + this.reservas.get(i).getHospede().getNome() + 
+                        ", CPF = " + this.reservas.get(i).getHospede().getCpf() +
+                        ", Quarto = " + this.reservas.get(i).getQuarto().getNumero() +
+                        ", Tipo = " + this.reservas.get(i).getQuarto().getTipo() +
+                        ", Check-IN = " + this.reservas.get(i).getDataEntrada() +
+                        ", Check-OUT = " + this.reservas.get(i).getDataSaida() +
+                        ", Preço Total = " + this.reservas.get(i).getQuarto().calcPrecoTotal(this.reservas.get(i).calcDias()) +
+                        ", Total de Dias = " + this.reservas.get(i).calcDias() + 
+                        "}";
+            }
+        }
+        return null;
     }
 
     // EXIBINDO UMA RESERVA:
@@ -183,6 +214,18 @@ public class Hotel {
         }
         int id = this.reservas.size() + 1;
         return id;
+    }
+
+    // INICIALIZANDO OS QUARTOS:
+    public void inicializandoQuartos(){
+        for(int i = 0 ; i < 7 ; i++){
+            QuartoComum q = new QuartoComum(i + 1);
+            this.addQuarto(q);
+        }
+        for(int i = 0 ; i < 3 ; i++){
+            QuartoVIP q = new QuartoVIP(i + 8);
+            this.addQuarto(q);
+        }
     }
 
     // VERFICANDO AS DATAS DISPONIVEIS:

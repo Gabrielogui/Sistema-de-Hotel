@@ -71,4 +71,18 @@ public class Reserva {
         double qtdeDias = ChronoUnit.DAYS.between(this.dataEntrada, this.dataSaida) + 1;
         return qtdeDias;
     }
+
+    @Override
+    public String toString() {
+        return "Reserva{" +
+                "ID = " + this.id +
+                ", Hóspede = " + this.hospede.getNome() + // Adiciona o nome do hóspede
+                ", Quarto = " + this.quarto.getNumero() +
+                ", Tipo = " + this.getQuarto().getTipo() +
+                ", Check-IN = " + this.dataEntrada +
+                ", Check-OUT = " + this.dataSaida +
+                ", Preço = " + this.quarto.calcPrecoTotal(this.calcDias()) +
+                ", Total de dias = " + this.calcDias() +
+                '}';
+    }
 }

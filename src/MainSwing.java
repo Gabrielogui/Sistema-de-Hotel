@@ -21,7 +21,7 @@ public class MainSwing {
         hotel.inicializandoQuartos();
         JFrame frame = new JFrame("Sistema de Reserva no Hotel");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(400, 200);
+        frame.setSize(400, 210);
         frame.setLayout(new FlowLayout());
 
         JButton fazerReservaBtn = new JButton("Fazer Reserva");
@@ -66,7 +66,7 @@ public class MainSwing {
 
     private void fazerReserva() {
         JFrame reservaFrame = new JFrame("Fazer Reserva");
-        reservaFrame.setSize(400, 200);
+        reservaFrame.setSize(620, 200);
         reservaFrame.setLayout(new GridLayout(6, 2));
 
         JTextField cpfField = new JTextField(1);
@@ -165,11 +165,11 @@ public class MainSwing {
         reservaFrame.add(cpfField);
         reservaFrame.add(new JLabel("Nome do Hóspede:")).setFont(new Font("Serif", Font.BOLD, 20));;
         reservaFrame.add(nomeField);
-        reservaFrame.add(new JLabel("Tipo de quarto:")).setFont(new Font("Serif", Font.BOLD, 20));;
+        reservaFrame.add(new JLabel("Tipo de quarto: (Vip/Comum)")).setFont(new Font("Serif", Font.BOLD, 20));;
         reservaFrame.add(tipoQuartoField);
-        reservaFrame.add(new JLabel("Data de Check-IN:")).setFont(new Font("Serif", Font.BOLD, 20));;
+        reservaFrame.add(new JLabel("Data de Check-IN: (aaaa-mm-dd)")).setFont(new Font("Serif", Font.BOLD, 20));;
         reservaFrame.add(dataEntradaField);
-        reservaFrame.add(new JLabel("Data de Check-OUT:")).setFont(new Font("Serif", Font.BOLD, 20));;
+        reservaFrame.add(new JLabel("Data de Check-OUT: (aaaa-mm-dd)")).setFont(new Font("Serif", Font.BOLD, 20));;
         reservaFrame.add(dataSaidaField);
 
         reservaFrame.add(reservarBtn);
@@ -284,7 +284,7 @@ public class MainSwing {
                     showMessage("[Erro]", "ID não pode estar em branco.");
                 }
                 
-                editar01Frame.setSize(400, 300);
+                editar01Frame.setSize(630, 300);
                 editar01Frame.setLayout(new GridLayout(5, 3, 5, 5));
                 JTextArea textArea = new JTextArea(10, 10);
                 textArea.setEditable(false);
@@ -353,9 +353,9 @@ public class MainSwing {
                 editar01Frame.add(new JScrollPane(textArea));
                 editar01Frame.add(new JLabel("Tipo de quarto(Vip / Comum):")).setFont(new Font("Serif", Font.BOLD, 20));;
                 editar01Frame.add(tipoQuartoField);
-                editar01Frame.add(new JLabel("Data de Check-IN:")).setFont(new Font("Serif", Font.BOLD, 20));;
+                editar01Frame.add(new JLabel("Data de Check-IN: (aaaa-mm-dd)")).setFont(new Font("Serif", Font.BOLD, 20));;
                 editar01Frame.add(dataEntradaField);
-                editar01Frame.add(new JLabel("Data de Check-OUT:")).setFont(new Font("Serif", Font.BOLD, 20));;
+                editar01Frame.add(new JLabel("Data de Check-OUT: (aaaa-mm-dd)")).setFont(new Font("Serif", Font.BOLD, 20));;
                 editar01Frame.add(dataSaidaField);
                 editar01Frame.add(editar01Btn);
                 
@@ -363,7 +363,7 @@ public class MainSwing {
             }
         });
 
-        editarFrame.add(new JLabel("ID do Hóspede:"));
+        editarFrame.add(new JLabel("ID da Reserva:")).setFont(new Font("Serif", Font.BOLD, 20));;
         editarFrame.add(idField);
         editarFrame.add(editarBtn);
         editarFrame.setVisible(true);

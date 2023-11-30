@@ -230,6 +230,10 @@ public class Hotel {
 
     // VERFICANDO AS DATAS DISPONIVEIS:
     public Quarto verificarDatasReserva(LocalDate data_entrada, LocalDate data_saida){
+        if(data_saida.isBefore(data_entrada)){
+            return null;
+        }
+        
         int cont1 = 0;
         int cont2 = 0;
 
@@ -282,6 +286,10 @@ public class Hotel {
     
     // VERIFICAR DATAS DOS QUARTOS VIPS:
     public Quarto verificarDatasVipReserva(LocalDate data_entrada, LocalDate data_saida){
+        if(data_saida.isBefore(data_entrada)){
+            return null;
+        }
+        
         int cont1 = 0;
         int cont2 = 0;
 

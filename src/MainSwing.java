@@ -206,7 +206,7 @@ public class MainSwing {
             }
         });
 
-        excluirFrame.add(new JLabel("ID do Hóspede:")).setFont(new Font("Serif", Font.BOLD, 20));;
+        excluirFrame.add(new JLabel("ID da Reserva:")).setFont(new Font("Serif", Font.BOLD, 20));;
         excluirFrame.add(idField);
         excluirFrame.add(excluirBtn);
         excluirFrame.setVisible(true);
@@ -259,7 +259,7 @@ public class MainSwing {
                 consultar02Frame.setVisible(true);
             }
         });
-        consultar01Frame.add(new JLabel("ID do Hóspede:")).setFont(new Font("Serif", Font.BOLD, 20));;
+        consultar01Frame.add(new JLabel("ID da Reserva:")).setFont(new Font("Serif", Font.BOLD, 20));;
         consultar01Frame.add(idField);
         consultar01Frame.add(consultarBtn);
         consultar01Frame.setVisible(true);

@@ -20,5 +20,10 @@ listagem e exclusão. O projeto foi desenvolvido como parte de um exercício pr�
 
 ## Como Excutar o Projeto
 
-1. Clone no projeo: git clone
+1. Clone no projeo: git clone https://github.com/Gabrielogui/Sistema-de-Hotel.git
 2. Rode o arquivo 'MainSwing.Java'
+
+## Contato
+
+- Email: gabrielcsro@gmail.com
+- Linkedin: https://www.linkedin.com/in/gabriel-rodrigues-a551012a2/

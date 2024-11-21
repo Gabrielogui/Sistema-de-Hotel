@@ -6,6 +6,14 @@ import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+/*
+ COISAS PARA ADICIONAR:
+ - PERSSISTÊNCIAS NOS DADOS
+ - ORGANIZAÇÃO DE PASTAS
+ - COMENTÁRIOS MAIS ORGANIZADOS
+ - ETC...
+ */
+
 public class MainSwing {
     private Hotel hotel = new Hotel();
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
